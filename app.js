@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 
-
 const app = express();
 const port = 5090;
 
@@ -13,11 +12,19 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-	const requestBody = req.body;
-	res.json({
-		message: "Data has been received.",
-		data: requestBody
-	});
+	try {
+		const requestBody = req.body;
+		res.json({
+			message: "Data has been received.",
+			data: requestBody
+		});
+	} catch (error) {
+      console.log(error);
+      res.status(500).json({
+         message: "Internal server error.",
+         error: error.message      
+      })
+   }
 });
 
 app.listen(port, () => {
