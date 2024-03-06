@@ -32,8 +32,6 @@
 // });
 
 const http = require("http");
-// const https = require("https");
-// const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
 
@@ -70,15 +68,3 @@ const httpServer = http.createServer(app);
 httpServer.listen(5870, () => {
 	console.log("HTTP server running on port 5870");
 });
-
-// // HTTPS server
-// const options = {
-// 	key: fs.readFileSync("path/to/private.key"),
-// 	cert: fs.readFileSync("path/to/certificate.crt")
-// };
-
-// const httpsServer = https.createServer(options, app);
-
-// httpsServer.listen(443, () => {
-// 	console.log("HTTPS server running on port 443");
-// });
