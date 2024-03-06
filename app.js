@@ -1,14 +1,50 @@
+// const express = require("express");
+// const cors = require("cors");
+
+// const app = express();
+// const port = 5090;
+
+// app.use(express.json());
+// app.use(cors());
+
+// app.get("/", (req, res) => {
+// 	res.send("Simple API for Ahmad.");
+// });
+
+// app.post("/", (req, res) => {
+// 	try {
+// 		const requestBody = req.body;
+// 		res.json({
+// 			message: "Data has been received.",
+// 			data: requestBody
+// 		});
+// 	} catch (error) {
+//       console.log(error);
+//       res.status(500).json({
+//          message: "Internal server error.",
+//          error: error.message
+//       })
+//    }
+// });
+
+// app.listen(port, () => {
+// 	console.log(`Server is running on port ${port}`);
+// });
+
+const http = require("http");
+// const https = require("https");
+// const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
 
 const app = express();
-const port = 5090;
 
 app.use(express.json());
 app.use(cors());
 
+// Your API routes and middleware setup
 app.get("/", (req, res) => {
-	res.send("Simple API for Ahmad.");
+	res.send("Hello World!");
 });
 
 app.post("/", (req, res) => {
@@ -22,11 +58,27 @@ app.post("/", (req, res) => {
       console.log(error);
       res.status(500).json({
          message: "Internal server error.",
-         error: error.message      
+         error: error.message
       })
    }
 });
 
-app.listen(port, () => {
-	console.log(`Server is running on port ${port}`);
+
+// HTTP server
+const httpServer = http.createServer(app);
+
+httpServer.listen(5870, () => {
+	console.log("HTTP server running on port 5870");
 });
+
+// // HTTPS server
+// const options = {
+// 	key: fs.readFileSync("path/to/private.key"),
+// 	cert: fs.readFileSync("path/to/certificate.crt")
+// };
+
+// const httpsServer = https.createServer(options, app);
+
+// httpsServer.listen(443, () => {
+// 	console.log("HTTPS server running on port 443");
+// });
